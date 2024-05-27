@@ -17,24 +17,6 @@ services:
       - "5432:5432"
     volumes:
       - db:/data/postgres
-  app:
-    container_name: todo-app
-    build:
-      context: ./
-    image: todo-app
-    restart: always
-    depends_on:
-      db:
-        condition: service_healthy
-    ports:
-      - 3000:3000
-    environment:
-      NODE_ENV: production
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-      DB_NAME: postgres
 
 volumes:
   db:
